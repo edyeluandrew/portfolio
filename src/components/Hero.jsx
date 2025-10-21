@@ -58,19 +58,7 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [typedText, isDeleting, currentRole]);
 
-  // Mouse parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Image hover effects
+  // Mouse parallax effect for image
   useEffect(() => {
     const image = imageRef.current;
     if (!image) return;
@@ -82,25 +70,38 @@ const Hero = () => {
       
       image.style.transform = `
         perspective(1000px) 
-        rotateY(${x * 10}deg) 
-        rotateX(${-y * 10}deg) 
-        scale3d(1.02, 1.02, 1.02)
+        rotateY(${x * 8}deg) 
+        rotateX(${-y * 8}deg) 
+        scale3d(1.05, 1.05, 1.05)
       `;
-      image.style.filter = `brightness(${1 + Math.abs(x + y) * 0.2})`;
     };
 
     const handleMouseLeave = () => {
-      image.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)';
-      image.style.filter = 'brightness(1)';
+      image.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1.02, 1.02, 1.02)';
     };
 
     image.addEventListener('mousemove', handleMouseMove);
     image.addEventListener('mouseleave', handleMouseLeave);
 
+    // Set initial transform
+    image.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1.02, 1.02, 1.02)';
+
     return () => {
       image.removeEventListener('mousemove', handleMouseMove);
       image.removeEventListener('mouseleave', handleMouseLeave);
     };
+  }, []);
+
+  // Background mouse effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const handleViewWork = () => {
@@ -271,7 +272,7 @@ const Hero = () => {
               <motion.div
                 className="absolute inset-0"
                 animate={{
-                  y: [0, -10, 0],
+                  y: [0, -15, 0],
                 }}
                 transition={{
                   duration: 4,
@@ -279,17 +280,21 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               >
-                {/* Glowing Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 rounded-3xl blur-xl opacity-50 animate-pulse"></div>
+                {/* Glowing Border Effect - Always Visible */}
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 rounded-3xl blur-xl opacity-40 animate-pulse"></div>
                 
-                {/* Animated Border Rings */}
-                <div className="absolute -inset-4 rounded-3xl border-2 border-amber-400/30 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-spin-slow"></div>
-                <div className="absolute -inset-6 rounded-3xl border-2 border-yellow-400/20 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-spin-slow" style={{ animationDelay: '1s' }}></div>
+                {/* Animated Border Rings - Always Visible */}
+                <div className="absolute -inset-4 rounded-3xl border-2 border-amber-400/40 opacity-70 transition-all duration-1000 animate-spin-slow"></div>
+                <div className="absolute -inset-6 rounded-3xl border-2 border-yellow-400/30 opacity-50 transition-all duration-1000 animate-spin-slow" style={{ animationDelay: '2s', animationDirection: 'reverse' }}></div>
+                <div className="absolute -inset-8 rounded-3xl border-2 border-amber-300/20 opacity-30 transition-all duration-1000 animate-spin-slow" style={{ animationDelay: '4s' }}></div>
                 
                 {/* Image Container */}
                 <div 
                   ref={imageRef}
-                  className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-amber-500/30 bg-slate-800/50 backdrop-blur-sm transition-all duration-500 ease-out cursor-pointer"
+                  className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-amber-500/40 bg-slate-800/50 backdrop-blur-sm transition-all duration-500 ease-out cursor-pointer shadow-2xl shadow-amber-500/20"
+                  style={{
+                    transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1.02, 1.02, 1.02)'
+                  }}
                 >
                   {/* Replace with your actual image */}
                   <img 
@@ -298,30 +303,43 @@ const Hero = () => {
                     className="w-full h-full object-cover transition-transform duration-500"
                   />
                   
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Overlay gradient - Always Visible */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/60 opacity-70"></div>
                   
-                  {/* Scan line effect */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scan"></div>
+                  {/* Scan line effect - Always Visible */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/20 to-transparent opacity-30 animate-scan"></div>
+
+                  {/* Holographic grid overlay - Always Visible */}
+                  <div 
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(90deg, transparent 79px, #d4af37 79px, #d4af37 81px, transparent 81px),
+                        linear-gradient(transparent 79px, #d4af37 79px, #d4af37 81px, transparent 81px)
+                      `,
+                      backgroundSize: '80px 80px'
+                    }}
+                  ></div>
                 </div>
 
-                {/* Floating Particles */}
-                {[...Array(8)].map((_, i) => (
+                {/* Floating Particles - Always Visible */}
+                {[...Array(12)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-2 h-2 bg-amber-400 rounded-full opacity-0 group-hover:opacity-100"
+                    className="absolute w-2 h-2 bg-amber-400 rounded-full opacity-60"
                     style={{
-                      left: `${20 + (i * 10)}%`,
-                      top: `${10 + (i * 5)}%`,
+                      left: `${15 + (i * 7)}%`,
+                      top: `${8 + (i * 4)}%`,
                     }}
                     animate={{
-                      y: [0, -20, 0],
-                      scale: [0, 1, 0],
-                      opacity: [0, 1, 0],
+                      y: [0, -25, 0],
+                      x: [0, Math.sin(i) * 10, 0],
+                      scale: [0.8, 1.2, 0.8],
+                      opacity: [0.3, 0.8, 0.3],
                     }}
                     transition={{
-                      duration: 3,
-                      delay: i * 0.3,
+                      duration: 4,
+                      delay: i * 0.4,
                       repeat: Infinity,
                       repeatType: "loop",
                     }}
@@ -329,23 +347,24 @@ const Hero = () => {
                 ))}
               </motion.div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-amber-500/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+              {/* Decorative Elements - Always Visible */}
+              <div className="absolute -top-6 -right-6 w-28 h-28 bg-amber-500/30 rounded-full blur-2xl opacity-60"></div>
+              <div className="absolute -bottom-6 -left-6 w-36 h-36 bg-yellow-500/30 rounded-full blur-2xl opacity-60"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-orange-500/20 rounded-full blur-xl opacity-40"></div>
             </div>
 
             {/* 3D Tech Sphere - Smaller, positioned as decoration */}
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 hidden lg:block">
+            <div className="absolute -bottom-12 -right-12 w-56 h-56 hidden lg:block opacity-80">
               <Canvas camera={{ position: [0, 0, 4] }}>
-                <ambientLight intensity={0.6} />
-                <directionalLight position={[10, 10, 5]} intensity={0.8} />
-                <pointLight position={[10, 10, 10]} intensity={0.5} color="#d4af37" />
-                <pointLight position={[-10, -10, -10]} intensity={0.3} color="#fbbf24" />
+                <ambientLight intensity={0.8} />
+                <directionalLight position={[10, 10, 5]} intensity={1} />
+                <pointLight position={[10, 10, 10]} intensity={0.6} color="#d4af37" />
+                <pointLight position={[-10, -10, -10]} intensity={0.4} color="#fbbf24" />
                 <AnimatedTechSphere />
                 <OrbitControls 
                   enableZoom={false} 
                   autoRotate 
-                  autoRotateSpeed={2}
+                  autoRotateSpeed={3}
                   enablePan={false}
                 />
               </Canvas>
@@ -378,11 +397,18 @@ const Hero = () => {
           0% { transform: translateY(-100%); }
           100% { transform: translateY(100%); }
         }
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 0.7; }
+        }
         .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
+          animation: spin-slow 12s linear infinite;
         }
         .animate-scan {
-          animation: scan 2s linear infinite;
+          animation: scan 3s linear infinite;
+        }
+        .animate-pulse-glow {
+          animation: pulse-glow 4s ease-in-out infinite;
         }
       `}</style>
     </section>
