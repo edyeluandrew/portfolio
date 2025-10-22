@@ -15,7 +15,6 @@ const Navigation = () => {
     { name: 'Contact', href: '#contact', icon: Mail }
   ];
 
-  // Mouse tracking for interactive effects
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -24,13 +23,11 @@ const Navigation = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
 
-      // Update active section based on scroll position
       const sections = navItems.map(item => item.href.substring(1));
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -98,7 +95,6 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Floating gradient orb that follows cursor */}
       <motion.div
         className="fixed inset-0 pointer-events-none z-40"
         style={{
@@ -116,7 +112,6 @@ const Navigation = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       >
-        {/* Animated top border */}
         <motion.div 
           className="absolute top-0 left-0 h-1 bg-gradient-to-r from-golden via-acid-green to-golden"
           initial={{ scaleX: 0 }}
@@ -126,14 +121,12 @@ const Navigation = () => {
 
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-5">
-            {/* Enhanced Logo */}
             <motion.div 
               className="flex items-center gap-4 cursor-pointer group relative"
               whileHover={{ scale: 1.06 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               onClick={() => handleNavClick('#home')}
             >
-              {/* Logo glow */}
               <motion.div 
                 className="absolute -inset-2 bg-gradient-to-r from-golden/20 to-acid-green/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100"
                 transition={{ duration: 0.5 }}
@@ -146,7 +139,6 @@ const Navigation = () => {
               >
                 <Code2 className="w-7 h-7 text-acid-bg z-10 drop-shadow-lg" strokeWidth={2.5} />
                 
-                {/* Animated gradient overlay */}
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-br from-acid-green via-golden to-acid-green opacity-0 group-hover:opacity-100"
                   animate={{
@@ -155,7 +147,6 @@ const Navigation = () => {
                   transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
                 />
                 
-                {/* Sparkle particles */}
                 <motion.div
                   className="absolute inset-0"
                   animate={{
@@ -175,11 +166,11 @@ const Navigation = () => {
                   whileHover={{ letterSpacing: "0.05em" }}
                   transition={{ duration: 0.3 }}
                 >
-                  ANDREW EDYELU
+                   EDYELU ANDREW
                 </motion.span>
                 <div className="flex items-center gap-2">
                   <span className="text-acid-green text-sm font-mono tracking-[0.3em] font-bold">
-                    DEV
+                    FULLSTACK DEV
                   </span>
                   <motion.div
                     animate={{ 
@@ -194,7 +185,6 @@ const Navigation = () => {
               </div>
             </motion.div>
 
-            {/* Enhanced Desktop Menu */}
             <div className="hidden lg:flex items-center gap-2">
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.href.substring(1);
@@ -232,7 +222,6 @@ const Navigation = () => {
                       }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      {/* Background gradient animation */}
                       <motion.div 
                         className="absolute inset-0 bg-gradient-to-r from-golden/0 via-golden/20 to-golden/0"
                         animate={{
@@ -245,7 +234,6 @@ const Navigation = () => {
                         }}
                       />
 
-                      {/* Icon with animation */}
                       <motion.div
                         animate={isActive ? { 
                           rotate: [0, -10, 10, -10, 0],
@@ -260,7 +248,6 @@ const Navigation = () => {
                         {item.name}
                       </span>
                       
-                      {/* Active glow effect */}
                       {isActive && (
                         <>
                           <motion.div 
@@ -275,7 +262,6 @@ const Navigation = () => {
                             }}
                           />
                           
-                          {/* Animated border */}
                           <motion.div
                             className="absolute inset-0 rounded-2xl"
                             style={{
@@ -293,13 +279,11 @@ const Navigation = () => {
                         </>
                       )}
                       
-                      {/* Hover shimmer */}
                       <motion.div 
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl -translate-x-full group-hover:translate-x-full"
                         transition={{ duration: 0.8 }}
                       />
                       
-                      {/* Active pulse indicator */}
                       {isActive && (
                         <motion.div 
                           className="absolute -top-1 -right-1 w-3 h-3 bg-acid-green rounded-full z-20"
@@ -328,7 +312,6 @@ const Navigation = () => {
                         </motion.div>
                       )}
 
-                      {/* Corner accent */}
                       <motion.div
                         className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-tl from-acid-green/20 to-transparent rounded-tl-2xl opacity-0 group-hover:opacity-100"
                         transition={{ duration: 0.3 }}
@@ -339,14 +322,12 @@ const Navigation = () => {
               })}
             </div>
 
-            {/* Enhanced Mobile Menu Button */}
             <motion.button 
               className="lg:hidden relative w-14 h-14 flex items-center justify-center bg-gradient-to-br from-acid-card/70 to-acid-card/50 rounded-2xl border-2 border-golden/30 group overflow-hidden"
               whileHover={{ scale: 1.1, borderColor: 'rgba(212, 175, 55, 0.6)' }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
             >
-              {/* Button glow */}
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-br from-golden/20 to-acid-green/20 opacity-0 group-hover:opacity-100"
                 transition={{ duration: 0.3 }}
@@ -376,7 +357,6 @@ const Navigation = () => {
                 )}
               </AnimatePresence>
               
-              {/* Rotating border effect */}
               <motion.div 
                 className="absolute inset-0 border-2 border-transparent rounded-2xl"
                 style={{
@@ -388,7 +368,6 @@ const Navigation = () => {
             </motion.button>
           </div>
 
-          {/* Enhanced Mobile Menu */}
           <AnimatePresence>
             {isOpen && (
               <motion.div 
@@ -398,7 +377,6 @@ const Navigation = () => {
                 animate="open"
                 exit="closed"
               >
-                {/* Mobile menu gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-b from-golden/5 to-transparent pointer-events-none" />
                 
                 <div className="relative p-6 space-y-3">
@@ -465,7 +443,6 @@ const Navigation = () => {
                           )}
                         </span>
                         
-                        {/* Active indicator */}
                         {isActive && (
                           <motion.div
                             className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-3/4 bg-gradient-to-b from-golden to-acid-green rounded-r-full"
@@ -475,7 +452,6 @@ const Navigation = () => {
                           />
                         )}
                         
-                        {/* Hover shimmer */}
                         <motion.div 
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-2xl -translate-x-full group-hover:translate-x-full"
                           transition={{ duration: 0.8 }}
@@ -489,7 +465,6 @@ const Navigation = () => {
           </AnimatePresence>
         </div>
 
-        {/* Bottom gradient accent */}
         <motion.div 
           className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-golden to-transparent"
           animate={{

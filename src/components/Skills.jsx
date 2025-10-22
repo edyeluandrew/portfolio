@@ -186,10 +186,10 @@ const Skills = () => {
   const skillsGridRef = useRef(null);
 
   const skills = [
-    { name: 'React JS', level: 92, color: 'text-electric-blue', icon: Code2 },
-    { name: 'TypeScript', level: 88, color: 'text-electric-blue', icon: Type },
+    { name: 'React JS', level: 82, color: 'text-electric-blue', icon: Code2 },
+    { name: 'TypeScript', level: 76, color: 'text-electric-blue', icon: Type },
     { name: 'JavaScript', level: 95, color: 'text-golden', icon: SquareCode },
-    { name: 'Tailwind CSS', level: 90, color: 'text-acid-green', icon: Palette },
+    { name: 'Tailwind CSS', level: 96, color: 'text-acid-green', icon: Palette },
     { name: 'Node.js', level: 85, color: 'text-acid-green', icon: Server },
     { name: 'MongoDB', level: 82, color: 'text-acid-green', icon: Database },
     { name: 'PostgreSQL', level: 80, color: 'text-electric-blue', icon: Database },
@@ -244,9 +244,7 @@ const Skills = () => {
 
   return (
     <section id="skills" className="min-h-screen bg-acid-bg relative overflow-hidden" ref={sectionRef}>
-      {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        {/* Floating Geometric Shapes */}
         <motion.div
           className="absolute top-20 left-10 w-20 h-20 border-2 border-golden/30"
           animate={{
@@ -272,7 +270,6 @@ const Skills = () => {
           }}
         />
         
-        {/* Particle System */}
         <div className="absolute inset-0">
           {[...Array(25)].map((_, i) => (
             <motion.div
@@ -344,7 +341,6 @@ const Skills = () => {
           </motion.p>
         </motion.div>
 
-        {/* Skill Categories */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -376,7 +372,6 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        {/* 3D Skills Grid */}
         <div 
           ref={skillsGridRef}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8 mb-16"
@@ -388,7 +383,6 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Tech Stack Tags */}
         <motion.div
           className="text-center"
           initial={{ opacity: 0 }}
@@ -401,9 +395,9 @@ const Skills = () => {
           </h4>
           <div className="inline-flex flex-wrap gap-3 justify-center max-w-4xl">
             {[
-              'Next.js', 'Express.js', 'React Native', 'GraphQL', 'Redis', 
-              'Docker', 'AWS', 'Git', 'Figma', 'Web3.js', 'Ethers.js', 
-              'Solidity', 'Firebase', 'Jest', 'Webpack', 'Vite'
+              'React.js', 'Express.js', 'React Native', 'GraphQL', 'Redis', 
+              'Docker', 'Heroku', 'Git', 'Figma', 'Web3.js', 'Ethers.js', 
+              'Rust', 'Firebase', 'Jest', 'Webpack', 'Vite' , 'Kotlin'
             ].map((tech, index) => (
               <motion.span
                 key={tech}

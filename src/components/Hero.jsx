@@ -128,7 +128,6 @@ const Hero = () => {
         }}></div>
       </div>
 
-      {/* Animated Background Blobs */}
       <div 
         className="absolute top-20 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse"
         style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}
@@ -151,9 +150,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left Content - Text */}
           <div className="text-center lg:text-left space-y-8">
-            {/* Greeting Badge */}
             <motion.div 
               className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
@@ -161,7 +158,7 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="w-2.5 h-2.5 bg-amber-500 rounded-full animate-pulse mr-3"></div>
-              <span className="text-amber-300 text-sm font-medium tracking-wide">Available for Collaboration and Open to work</span>
+              <span className="text-amber-300 text-sm font-medium tracking-wide">Am a Computer Science major available for Collaboration and Open to work</span>
             </motion.div>
 
             {/* Main Heading with Gradient */}
@@ -234,7 +231,6 @@ const Hero = () => {
               </button>
             </motion.div>
 
-            {/* Social Links */}
             <motion.div 
               className="flex gap-4 justify-center lg:justify-start pt-8"
               initial={{ opacity: 0 }}
@@ -259,16 +255,13 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Content - Profile Image & 3D Visual */}
           <motion.div 
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {/* Profile Image Container */}
             <div className="relative mx-auto lg:mx-0 w-80 h-80 lg:w-96 lg:h-96 group">
-              {/* Floating Animation Container */}
               <motion.div
                 className="absolute inset-0"
                 animate={{
@@ -280,15 +273,12 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               >
-                {/* Glowing Border Effect - Always Visible */}
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 rounded-3xl blur-xl opacity-40 animate-pulse"></div>
                 
-                {/* Animated Border Rings - Always Visible */}
                 <div className="absolute -inset-4 rounded-3xl border-2 border-amber-400/40 opacity-70 transition-all duration-1000 animate-spin-slow"></div>
                 <div className="absolute -inset-6 rounded-3xl border-2 border-yellow-400/30 opacity-50 transition-all duration-1000 animate-spin-slow" style={{ animationDelay: '2s', animationDirection: 'reverse' }}></div>
                 <div className="absolute -inset-8 rounded-3xl border-2 border-amber-300/20 opacity-30 transition-all duration-1000 animate-spin-slow" style={{ animationDelay: '4s' }}></div>
                 
-                {/* Image Container */}
                 <div 
                   ref={imageRef}
                   className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-amber-500/40 bg-slate-800/50 backdrop-blur-sm transition-all duration-500 ease-out cursor-pointer shadow-2xl shadow-amber-500/20"
@@ -296,20 +286,16 @@ const Hero = () => {
                     transform: 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1.02, 1.02, 1.02)'
                   }}
                 >
-                  {/* Replace with your actual image */}
                   <img 
                     src="./images/edyelu-andrew.jpg" 
                     alt="Edyelu Andrew"
                     className="w-full h-full object-cover transition-transform duration-500"
                   />
                   
-                  {/* Overlay gradient - Always Visible */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/60 opacity-70"></div>
                   
-                  {/* Scan line effect - Always Visible */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/20 to-transparent opacity-30 animate-scan"></div>
 
-                  {/* Holographic grid overlay - Always Visible */}
                   <div 
                     className="absolute inset-0 opacity-10"
                     style={{
@@ -322,7 +308,6 @@ const Hero = () => {
                   ></div>
                 </div>
 
-                {/* Floating Particles - Always Visible */}
                 {[...Array(12)].map((_, i) => (
                   <motion.div
                     key={i}
@@ -347,13 +332,11 @@ const Hero = () => {
                 ))}
               </motion.div>
 
-              {/* Decorative Elements - Always Visible */}
               <div className="absolute -top-6 -right-6 w-28 h-28 bg-amber-500/30 rounded-full blur-2xl opacity-60"></div>
               <div className="absolute -bottom-6 -left-6 w-36 h-36 bg-yellow-500/30 rounded-full blur-2xl opacity-60"></div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-orange-500/20 rounded-full blur-xl opacity-40"></div>
             </div>
 
-            {/* 3D Tech Sphere - Smaller, positioned as decoration */}
             <div className="absolute -bottom-12 -right-12 w-56 h-56 hidden lg:block opacity-80">
               <Canvas camera={{ position: [0, 0, 4] }}>
                 <ambientLight intensity={0.8} />
@@ -373,7 +356,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}

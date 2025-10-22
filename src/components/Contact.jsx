@@ -38,7 +38,6 @@ const FloatingContactElement = ({ icon: Icon, position, delay }) => {
         }
       );
 
-      // Floating animation
       gsap.to(elementRef.current, {
         y: -20,
         rotationY: 10,
@@ -131,7 +130,6 @@ const ContactField = ({ label, type, name, value, onChange, required, icon: Icon
         />
       )}
       
-      {/* Animated border effect */}
       <motion.div
         className="absolute inset-0 rounded-2xl border-2 border-transparent pointer-events-none"
         initial={false}
@@ -193,10 +191,8 @@ const ContactCard = ({ icon: Icon, title, value, link, delay }) => {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       onClick={handleClick}
     >
-      {/* Holographic effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-golden/10 to-acid-green/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
-      {/* Animated icon */}
       <motion.div 
         className="flex justify-center mb-4 relative z-10"
         whileHover={{ 
@@ -419,7 +415,6 @@ const Contact = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Contact Form */}
             <motion.div 
               ref={formRef}
               className="relative"
@@ -454,7 +449,6 @@ const Contact = () => {
                       {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                     </span>
                     
-                    {/* Animated background */}
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-acid-green to-golden"
                       initial={{ x: '-100%' }}
@@ -493,7 +487,6 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Information */}
             <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: 50 }}
@@ -510,7 +503,6 @@ const Contact = () => {
                 ))}
               </div>
 
-              {/* Additional Info */}
               <motion.div
                 className="bg-acid-card/40 backdrop-blur-lg rounded-2xl p-8 border border-golden/20"
                 initial={{ opacity: 0, y: 30 }}
