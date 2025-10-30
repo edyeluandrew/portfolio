@@ -100,9 +100,22 @@ const ProjectCard = ({ project, index }) => {
 const Projects = () => {
   const projects = [
     {
+      title: "Numba Cafe",
+      description: "A full-stack cafe management application with menu management, and real time booking and reservation of rooms. Features admin dashboard for inventory and order tracking.",
+      // category: "Full-Stack Application",
+      image: "./images/numba logo.png",
+      technologies: ["React", "Django", "postgresql", "RESTfulAPI",],
+      githubLink: "https://github.com/edyeluandrew/numba-cafe",
+      liveLink: "https://numba-hotel.vercel.app/",
+      stats: [
+        { value: "Full-Stack", label: "Application" },
+        { value: "Real-time", label: "Reservation of rooms" }
+      ]
+    },
+    {
       title: "Beta Tech Labs",
       description: "A modern research hub website for blockchain and AI innovation, featuring cutting-edge research, team profiles, and technology showcases.",
-      category: "Web Development",
+      // category: "Web Development",
       image: "./images/beta.jpg", 
       technologies: ["React", "Tailwind CSS", "JavaScript", "Framer Motion"],
       githubLink: "https://github.com/edyeluandrew/beta-tech-labs", 
@@ -115,7 +128,7 @@ const Projects = () => {
     {
       title: "Novak Hospitality",
       description: "Professional website for Novak Hospitality company showcasing their luxury services, amenities, and booking capabilities for premium hospitality experiences.",
-      category: "Web Development",
+      // category: "Web Development",
       image: "./images/novak.jpg",
       technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
       githubLink: "https://github.com/edyeluandrew/novak-hospitality", 
@@ -155,14 +168,14 @@ const Projects = () => {
           </h2>
 
           <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Explore my portfolio of professional websites spanning{' '}
-            <span className="text-amber-400 font-semibold">research hubs</span>,{' '}
-            <span className="text-amber-400 font-semibold">hospitality brands</span>, and{' '}
-            <span className="text-amber-400 font-semibold">modern web solutions</span>
+            Explore my portfolio of professional applications spanning{' '}
+            <span className="text-amber-400 font-semibold">full-stack solutions</span>,{' '}
+            <span className="text-amber-400 font-semibold">research hubs</span>, and{' '}
+            <span className="text-amber-400 font-semibold">modern web platforms</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
